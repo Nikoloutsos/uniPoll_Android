@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.activity.EclassLogInActivity;
+import com.androiddreamer.unipoll.activity.EmailLoginActivity;
 import com.androiddreamer.unipoll.databinding.ActivityLoginBinding;
 
 public class LoginViewModel extends ViewModel {
@@ -15,23 +16,28 @@ public class LoginViewModel extends ViewModel {
     private ActivityLoginBinding binding;
     private Context context;
 
+    // Livedata
 
-    //Sets the binding for the
-    public void setBinding(ActivityLoginBinding binding){
+
+    public void bindActivity(Context context, ActivityLoginBinding binding){
+        this.context = context;
         this.binding = binding;
-    }
-
-    public void initializeLiveData(){
-
-    }
-
-    public void setHandler(){
         binding.setHandler(new Handler(context));
     }
 
-    public void setContext(Context context){
-        this.context = context;
+
+    private void initializeLiveData(){
+
     }
+
+
+
+
+
+
+
+
+
 
 
     //Responsible for setting functionality in Views
@@ -50,6 +56,7 @@ public class LoginViewModel extends ViewModel {
 
                 case R.id.login_with_email:
                     Log.d("aabb", "onEventHappened: login with email");
+                    context.startActivity(new Intent(context, EmailLoginActivity.class));
 
                     break;
                 default:

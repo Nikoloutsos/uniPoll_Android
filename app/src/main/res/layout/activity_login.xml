@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.LoginActivity">
+        tools:context=".activity.LoginActivity"
+        android:background="#333333">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25999998"
-            android:textColor="#333333"
+            android:textColor="#ffffff"
             android:fontFamily="sans-serif-black"/>
 
         <Button

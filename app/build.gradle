@@ -40,5 +40,7 @@ dependencies {
     def retrofit_version = "2.7.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
+    implementation 'com.android.support:design:28.1.0'
+
 
 }

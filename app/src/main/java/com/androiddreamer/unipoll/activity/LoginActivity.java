@@ -22,11 +22,11 @@ public class LoginActivity extends AppCompatActivity {
         //Enable data binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-//        Initialize viewModel
+        //Initialize viewModel
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        viewModel.setContext(this);
-        viewModel.setBinding(binding);
-        viewModel.setHandler();
+        viewModel.bindActivity(this, binding);
+
+        //Observe livedata
 
     }
 }
