@@ -30,22 +30,9 @@ public class EclassLoginViewModel extends ViewModel {
     /**
      * Livedata
      */
-    private MutableLiveData<Boolean> liveDataUserConnectedInfo;
-    private MutableLiveData<Boolean> liveDataError;
-    private MutableLiveData<String>  liveDataWaitSpinner;
-
-    public void bindActivity(Context context, ActivityEclassLogInBinding binding){
-        this.context = context;
-        this.binding = binding;
-        binding.setHandler(new Handler(context, this));
-        initializeLiveData();
-    }
-
-    private void initializeLiveData(){
-        liveDataUserConnectedInfo = new MutableLiveData<>();
-        liveDataError = new MutableLiveData<>();
-        liveDataWaitSpinner = new MutableLiveData<>();
-    }
+    private MutableLiveData<Boolean> liveDataUserConnectedInfo = new MutableLiveData<>();
+    private MutableLiveData<Boolean> liveDataError = new MutableLiveData<>();
+    private MutableLiveData<String>  liveDataWaitSpinner = new MutableLiveData<>();
 
     /**
      * Business logic
@@ -71,8 +58,6 @@ public class EclassLoginViewModel extends ViewModel {
         });
     }
 
-
-
     /**
      * Getter for livedata
      */
@@ -86,30 +71,7 @@ public class EclassLoginViewModel extends ViewModel {
         return liveDataWaitSpinner;
     }
 
-    /**
-     * Responsible for click interactions
-     */
-    public static class Handler{
-        private EclassLoginViewModel viewModel;
-        Handler(Context context, EclassLoginViewModel viewModel){
-            this.viewModel = viewModel;
-        }
 
-        public void onEventHappened(View view){
-            switch (view.getId()){
-                case R.id.sign_in_btn:
-                    String username = "p3170122";
-                    String password = "22920276324story";
-                    String deciceToken = "dasfhjefejwfrn32";
-
-                    viewModel.signWithEclass(username, password, deciceToken);
-                    break;
-                default:
-                    break;
-
-            }
-        }
-    }
 
 
 }

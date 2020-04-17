@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="handler"
-            type="com.androiddreamer.unipoll.viewModel.LoginViewModel.Handler" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,27 +16,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A description goes here"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign in with"
+            android:textColor="#ffffff"
             android:textSize="28sp"
             app:layout_constraintBottom_toTopOf="@+id/login_with_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25999998"
-            android:textColor="#ffffff"
-            android:fontFamily="sans-serif-black"/>
+            app:layout_constraintVertical_bias="0.858" />
 
         <Button
             android:id="@+id/login_with_email"
             android:layout_width="230dp"
             android:layout_height="90dp"
-            android:text="Sign in with email"
+            android:text="edu email"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_medium"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="#FF9800"
-            android:onClick="@{handler::onEventHappened}"/>
+            android:background="@drawable/rounded_button_shape_login_email"/>
 
         <Button
             android:id="@+id/login_with_eclass"
@@ -48,9 +49,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_with_email"
-            android:background="#8000BCD4"
-            android:text="Sign in with eclass"
-            android:onClick="@{handler::onEventHappened}"/>
+            android:background="@drawable/rounded_button_shape_login_eclass"
+            android:text="Eclass"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_medium"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

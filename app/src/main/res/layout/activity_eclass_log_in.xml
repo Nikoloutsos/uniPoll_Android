@@ -4,57 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="handler"
-            type="com.androiddreamer.unipoll.viewModel.EclassLoginViewModel.Handler" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.EclassLogInActivity">
+        tools:context=".activity.EclassLogInActivity"
+        android:background="#333333">
 
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/open_eclass_banner"
+            android:layout_height="171dp"
+            android:src="@drawable/eclass_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp"/>
 
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            app:layout_constraintBottom_toTopOf="@+id/sign_in_btn"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:layout_editor_absoluteX="16dp" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
 
 
-        <EditText
-            android:layout_width="match_parent"
+            android:text="Username"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edu_email_cv"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            tools:layout_editor_absoluteX="44dp"
-            android:layout_marginTop="8dp" />
+            app:cardElevation="4dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="2dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:hint="p3170122"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+
+
+            android:text="Password"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edu_email_cv" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edu_email_cv2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="2dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:inputType="textPassword"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edu_email_cv2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            style="@style/Theme.AppCompat"
+            android:text="Remember me"
+            android:textColor="#ffffff"
+            android:buttonTint="#ffffff" />
 
         <Button
-            android:id="@+id/sign_in_btn"
-            android:layout_width="240dp"
-            android:layout_height="90dp"
-            android:layout_marginBottom="64dp"
-            android:background="#FF9800"
-            android:text="SIGN IN"
+            android:id="@+id/button"
+            android:layout_width="210dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_button_shape_login_email"
+            android:fontFamily="@font/roboto_medium"
+            android:text="LOGIN"
+            android:textColor="#ffffff"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{handler::onEventHappened}"/>
+            app:layout_constraintTop_toBottomOf="@+id/edu_email_cv2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

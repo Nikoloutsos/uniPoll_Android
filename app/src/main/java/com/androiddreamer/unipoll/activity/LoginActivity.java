@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.viewModel.LoginViewModel;
@@ -24,9 +26,20 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize viewModel
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        viewModel.bindActivity(this, binding);
 
-        //Observe livedata
 
+        binding.loginWithEclass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, EclassLogInActivity.class));
+            }
+        });
+
+        binding.loginWithEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, EmailLoginActivity.class));
+            }
+        });
     }
 }
