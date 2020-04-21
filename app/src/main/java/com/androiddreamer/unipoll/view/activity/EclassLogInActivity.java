@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.activity;
+package com.androiddreamer.unipoll.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
 import com.androiddreamer.unipoll.viewModel.EclassLoginViewModel;
-import com.androiddreamer.unipoll.viewModel.LoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 public class EclassLogInActivity extends AppCompatActivity {

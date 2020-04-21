@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--https://www.svgrepo.com/svg/54740/stats-->
     <item
         android:id="@+id/tab_artists"
-        android:icon="@drawable/ic_polling"
+        android:icon="@drawable/ic_polls_icon"
         android:title="Polls" />
 
     <item
         android:id="@+id/tab_account"
-        android:icon="@drawable/ic_polling"
+        android:icon="@drawable/ic_profile"
         android:title="Profile" />
 </menu>

@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.network;
+package com.androiddreamer.unipoll.model.network;
 
 import retrofit2.Retrofit;
 

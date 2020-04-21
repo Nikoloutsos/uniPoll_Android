@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.activity;
+package com.androiddreamer.unipoll.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

@@ -1,19 +1,13 @@
 package com.androiddreamer.unipoll.viewModel;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.androiddreamer.unipoll.R;
-import com.androiddreamer.unipoll.activity.EclassLogInActivity;
-import com.androiddreamer.unipoll.activity.EmailLoginActivity;
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
-import com.androiddreamer.unipoll.network.RetrofitConfig;
+import com.androiddreamer.unipoll.model.network.RetrofitConfig;
 
 import java.io.IOException;
 

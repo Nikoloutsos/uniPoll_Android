@@ -1,7 +1,8 @@
-package com.androiddreamer.unipoll.fragment;
+package com.androiddreamer.unipoll.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,19 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androiddreamer.unipoll.R;
+import com.androiddreamer.unipoll.databinding.FragmentProfileBinding;
 
 
-public class PollListFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    public PollListFragment() {
+    FragmentProfileBinding binding;
+
+    public ProfileFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_poll_list, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
+        return binding.getRoot();
     }
 }

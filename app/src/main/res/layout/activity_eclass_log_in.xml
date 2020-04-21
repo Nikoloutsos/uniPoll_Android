@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.EclassLogInActivity"
+        tools:context=".view.activity.EclassLogInActivity"
         android:background="#333333">
 
 
@@ -111,7 +111,7 @@
         <Button
             android:id="@+id/button"
             android:layout_width="210dp"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginBottom="16dp"

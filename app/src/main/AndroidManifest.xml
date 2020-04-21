@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".activity.verifyEmailActivity" />
-        <activity android:name=".activity.EmailLoginActivity" />
-        <activity android:name=".activity.EclassLogInActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.SplashScreenActivity">
+        <activity android:name=".view.activity.PollDetail"></activity>
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.verifyEmailActivity" />
+        <activity android:name=".view.activity.EmailLoginActivity" />
+        <activity android:name=".view.activity.EclassLogInActivity" />
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

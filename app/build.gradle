@@ -5,6 +5,12 @@ android {
         enabled = true
     }
 
+    android { // If you remove it okhttp complains
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.androiddreamer.unipoll"
@@ -51,4 +57,8 @@ dependencies {
 
     // Statistics charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // ChipView
+    implementation 'com.robertlevonyan.view:MaterialChipView:2.0.4'
+
 }

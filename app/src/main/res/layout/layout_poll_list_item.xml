@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Which platform do you prefer?"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.robertlevonyan.views.chip.Chip
+            android:id="@+id/chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aueb"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView5"
+            app:mcv_backgroundColor="#EF6C00"
+            app:mcv_textColor="#FFFFFF"
+            />
+
+        <com.robertlevonyan.views.chip.Chip
+            android:id="@+id/chip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="Computer Science"
+            app:mcv_backgroundColor="#EF6C00"
+            app:mcv_textColor="#FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/chip"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"/>
+
+        <ImageView
+            android:id="@+id/ic_sex"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_teacher_man"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chip"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Kotidis"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_sex"
+            app:layout_constraintStart_toEndOf="@id/ic_sex"
+            app:layout_constraintTop_toTopOf="@+id/ic_sex" />
+
+
+        <ImageView
+        android:id="@+id/badge_new"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+
+        android:src="@drawable/ic_new_badge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

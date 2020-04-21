@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.network;
+package com.androiddreamer.unipoll.model.network;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
