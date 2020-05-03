@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.LayoutPollListItemBinding;
-import com.androiddreamer.unipoll.util.JavaUtil;
 import com.androiddreamer.unipoll.view.activity.PollDetail;
+import com.androiddreamer.unipoll.view.fragment.ActivePollListFragment;
 
 import org.json.JSONObject;
 
 import java.util.List;
 
 /**
- * Adapter for populating recyclerView in {@link com.androiddreamer.unipoll.view.fragment.PollListFragment}
+ * Adapter for populating recyclerView in {@link ActivePollListFragment}
  */
 public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 

@@ -7,7 +7,8 @@ import android.os.Bundle;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityMainBinding;
-import com.androiddreamer.unipoll.view.fragment.PollListFragment;
+import com.androiddreamer.unipoll.view.fragment.ActivePollListFragment;
+import com.androiddreamer.unipoll.view.fragment.CompletedPollListFragment;
 import com.androiddreamer.unipoll.view.fragment.ProfileFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,23 +27,35 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        PollListFragment fragment = new PollListFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, fragment, "tag1").commit();
+        initBottomNavigationBar();
 
-        AnimatedBottomBar bottomBar = findViewById(R.id.bottom_nav_bar1);
-        bottomBar.selectTab(bottomBar.getTabs().get(0), false);
+        ActivePollListFragment activePollListFragment = new ActivePollListFragment();
+        getSupportFragmentManager().beginTransaction().add(binding.fragmentHolder.getId(), activePollListFragment, "0").commit();
+    }
 
-        bottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    private void initBottomNavigationBar() {
+        binding.bottomNavBar.selectTab(binding.bottomNavBar.getTabs().get(0), false);
+        binding.bottomNavBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NotNull AnimatedBottomBar.Tab tab1) {
                 switch (i1){
                     case 0:
-                        PollListFragment fragment = new PollListFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, fragment, "1").commit();
+                        ActivePollListFragment activePollListFragment = new ActivePollListFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, activePollListFragment, "0").commit();
                         break;
                     case 1:
-                        ProfileFragment fragment1 = new ProfileFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, fragment1, "2").commit();
+                        CompletedPollListFragment completedPollListFragment = new CompletedPollListFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, completedPollListFragment, "1").commit();
+                        break;
+                    case 2:
+                        ProfileFragment profileFragment = new ProfileFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, profileFragment, "2").commit();
                         break;
                 }
             }
@@ -52,6 +65,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }

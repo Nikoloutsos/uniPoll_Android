@@ -17,15 +17,13 @@
             android:id="@+id/fragment_holder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar1"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!--https://github.com/Droppers/AnimatedBottomBar?utm_source=android-arsenal.com&utm_medium=referral&utm_campaign=8058 -->
         <nl.joery.animatedbottombar.AnimatedBottomBar
-            android:id="@+id/bottom_nav_bar1"
+            android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:abb_tabs="@menu/bottom_navigation_menu"

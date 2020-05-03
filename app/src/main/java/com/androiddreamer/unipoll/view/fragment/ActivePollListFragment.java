@@ -28,11 +28,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class PollListFragment extends Fragment {
+public class ActivePollListFragment extends Fragment {
 
     FragmentPollListBinding binding;
 
-    public PollListFragment() {
+    public ActivePollListFragment() {
         // Required empty public constructor
     }
 
