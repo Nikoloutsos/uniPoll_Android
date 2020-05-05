@@ -39,4 +39,14 @@ public class CustomJSONObject extends JSONObject {
             return new JSONArray();
         }
     }
+
+    @Override
+    public JSONObject getJSONObject(String name){
+        try{
+            JSONObject value = super.getJSONObject(name);
+            return value;
+        }catch (Exception e){
+            return new JSONObject();
+        }
+    }
 }

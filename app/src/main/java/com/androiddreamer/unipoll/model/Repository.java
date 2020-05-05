@@ -2,11 +2,10 @@ package com.androiddreamer.unipoll.model;
 
 import androidx.lifecycle.LiveData;
 
-import com.androiddreamer.unipoll.model.network.API;
+import com.androiddreamer.unipoll.network.API;
+import com.androiddreamer.unipoll.network.RetrofitConfig;
 
 import org.json.JSONObject;
-
-import retrofit2.Retrofit;
 
 public class Repository {
     API api;
@@ -16,7 +15,12 @@ public class Repository {
 
     public static Repository getInstance() {
         if(repository == null) repository = new Repository();
+        repository.api = RetrofitConfig.callApi();
         return repository;
+    }
+
+    public LiveData<JSONObject> getPINForEmailAuthentication(String email){
+        return null;
     }
 
     public LiveData<JSONObject> getAllActivePolls(String userId){
@@ -35,7 +39,19 @@ public class Repository {
         return null;
     }
 
-    public LiveData<Boolean> setVoteForPoll(String pollId){
+    public LiveData<JSONObject> sendLogInEclass(String email){
+        return null;
+    }
+
+    public LiveData<JSONObject> sendSuccessPinInserted(String email){
+        return null;
+    }
+
+    public LiveData<Boolean> sendVoteForPoll(String pollId){
+        return null;
+    }
+
+    public LiveData<Boolean> sendPushNotificationToken(String pollId){
         return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.model.network;
+package com.androiddreamer.unipoll.network;
 
 import retrofit2.Retrofit;
 
@@ -15,8 +15,4 @@ public class RetrofitConfig {
         API service = retrofit.create(API.class);
         return service;
     }
-
-
-
-
 }

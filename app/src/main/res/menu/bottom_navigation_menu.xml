@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/tab_completed_polls"
-        android:icon="@drawable/ic_polls_icon"
+        android:icon="@drawable/ic_completed_polls"
         android:title="Completed Polls" />
 
     <item
