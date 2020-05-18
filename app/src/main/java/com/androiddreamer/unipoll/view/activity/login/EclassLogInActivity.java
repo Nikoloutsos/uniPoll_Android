@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.view.activity;
+package com.androiddreamer.unipoll.view.activity.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
+import com.androiddreamer.unipoll.util.UDHelper;
+import com.androiddreamer.unipoll.view.activity.MainActivity;
 import com.androiddreamer.unipoll.viewModel.EclassLoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -64,6 +66,7 @@ public class EclassLogInActivity extends AppCompatActivity {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(EclassLogInActivity.this, MainActivity.class));
             }
         });

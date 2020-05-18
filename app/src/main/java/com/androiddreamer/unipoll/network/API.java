@@ -11,16 +11,31 @@ import retrofit2.http.Query;
 // Retrofit interface for interacting with uniPoll Server
 public interface API {
 
-    public static final String PREFIX = "unipoll/webservices/";
+    public static final String PREFIX = "UniPoll/webservices/";
+
+    @FormUrlEncoded
+    @POST(PREFIX + "app/send_auth_pin_email.php")
+    Call<ResponseBody> getAndSendAuthPinEmail(
+            @Field("email") String email
+    );
+
+    @FormUrlEncoded
+    @POST(PREFIX + "app/complete_email_authorization.php")
+    Call<ResponseBody> sendSuccesfullPINToServer(
+            @Field("email") String email,
+            @Field("token") String pushNotificationToken
+    );
+
+
 
     @GET("get_active_polls.php")
     Call<ResponseBody> getActivePolls(
-            @Query("user_id") int userId
+            @Query("user_id") String userId
     );
 
     @GET("get_completed_polls.php")
     Call<ResponseBody> getCompletedPolls(
-            @Query("user_id") int userId
+            @Query("user_id") String userId
     );
 
     @GET("get_poll_details.php")
@@ -30,7 +45,7 @@ public interface API {
     );
 
     @GET("get_pin_for_email_authentication.php")
-    Call<ResponseBody> getPollDetails(
+    Call<ResponseBody> getPINForEmailAuthentication(
             @Query("email") String userId
     );
 
@@ -54,8 +69,15 @@ public interface API {
 
     @FormUrlEncoded
     @POST(PREFIX + "vote_for_poll.php")
-    Call<ResponseBody> updatePushNotificationToken(
+    Call<ResponseBody> voteForPoll(
             @Field("user_id") String userId,
             @Field("option_id") String optionId
+    );
+
+    @FormUrlEncoded
+    @POST(PREFIX + "update_push_notification_token.php")
+    Call<ResponseBody> updatePushNotificationToken(
+            @Field("user_id") String userId,
+            @Field("push_notification_token") String optionId
     );
 }

@@ -1,11 +1,16 @@
 package com.androiddreamer.unipoll.model;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.androiddreamer.unipoll.network.API;
 import com.androiddreamer.unipoll.network.RetrofitConfig;
+import com.androiddreamer.unipoll.util.SwiftyJSONObject;
 
-import org.json.JSONObject;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Repository {
     API api;
@@ -19,39 +24,158 @@ public class Repository {
         return repository;
     }
 
-    public LiveData<JSONObject> getPINForEmailAuthentication(String email){
-        return null;
+    public LiveData<SwiftyJSONObject> getPINForEmailAuthentication(String email){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.getPINForEmailAuthentication(email).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> getAllActivePolls(String userId){
-        return null;
+    public LiveData<SwiftyJSONObject> getActivePolls(String userId){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.getActivePolls(userId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> getCompletedPolls(String userId){
-        return null;
+    public LiveData<SwiftyJSONObject> getCompletedPolls(String userId){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.getCompletedPolls(userId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> getPollDetails(String pollId){
-        return null;
+    public LiveData<SwiftyJSONObject> getPollDetails(String userId, int pollId){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.getPollDetails(userId, pollId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> getUserDetails(String userId){
-        return null;
+    public LiveData<SwiftyJSONObject> getUserDetails(String userId){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.getUserDetails(userId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> sendLogInEclass(String email){
-        return null;
+    public LiveData<SwiftyJSONObject> sendLogInEclass(String email, String password){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.loginWithEclass(email, password).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<JSONObject> sendSuccessPinInserted(String email){
-        return null;
+    public LiveData<SwiftyJSONObject> sendSuccessPinInserted(String email){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.sendSuccessfulPINInsertedForEmail(email).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<Boolean> sendVoteForPoll(String pollId){
-        return null;
+    public LiveData<SwiftyJSONObject> sendVoteForPoll(String userId, String pollId){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.voteForPoll(userId, pollId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
     }
 
-    public LiveData<Boolean> sendPushNotificationToken(String pollId){
-        return null;
+    public LiveData<SwiftyJSONObject> sendPushNotificationToken(String userId, String pushNotificationToken){
+        MutableLiveData<SwiftyJSONObject> result = new MutableLiveData<>();
+        api.updatePushNotificationToken(userId, pushNotificationToken).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                SwiftyJSONObject jsonResponse = getJSONResponse(response);
+                result.setValue(jsonResponse);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        return result;
+    }
+
+
+    private SwiftyJSONObject getJSONResponse(Response<ResponseBody> response){
+        try {
+            String string = response.body().string();
+            return new SwiftyJSONObject(string);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

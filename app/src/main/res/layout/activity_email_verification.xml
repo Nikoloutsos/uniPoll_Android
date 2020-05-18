@@ -50,6 +50,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:lineColor="#CCFFFFFF"
+            android:textColor="#ffffff"
+            tools:text="1324"
             app:lineWidth="3dp"
             app:viewType="rectangle" />
 
@@ -80,8 +82,9 @@
                     android:textSize="15sp"
                     android:textColor="#ffffff"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:padding="12dp"/>
+                    android:gravity="top"
+                    android:padding="12dp"
+                    android:lines="2"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,9 +6,15 @@ import org.json.JSONObject;
 
 /**
  * A child of {@link JSONObject} that
- * mimics Alamofire library behaviour for iOS
+ * mimics SwiftyJSON library behaviour for iOS
  */
-public class CustomJSONObject extends JSONObject {
+public class SwiftyJSONObject extends JSONObject {
+
+    public SwiftyJSONObject(){}
+
+    public SwiftyJSONObject(String jsonString) throws JSONException {
+        super(jsonString);
+    }
 
     @Override
     public String getString(String name){

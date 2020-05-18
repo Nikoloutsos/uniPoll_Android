@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "518240478812",
+    "firebase_url": "https://unipoll-9bc4f.firebaseio.com",
+    "project_id": "unipoll-9bc4f",
+    "storage_bucket": "unipoll-9bc4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518240478812:android:d5cfa56d10fb79cccb6899",
+        "android_client_info": {
+          "package_name": "com.androiddreamer.unipoll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518240478812-pgthags8jae7u0vfkcj5r9neqrbra3g4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvn78MnAWThohlxW0jZ8LYB1VXYAZQx6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518240478812-pgthags8jae7u0vfkcj5r9neqrbra3g4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

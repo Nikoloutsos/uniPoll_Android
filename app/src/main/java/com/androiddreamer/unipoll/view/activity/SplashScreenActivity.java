@@ -10,6 +10,13 @@ import android.view.WindowManager;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.SplashScreenBinding;
+import com.androiddreamer.unipoll.network.RetrofitConfig;
+import com.androiddreamer.unipoll.view.activity.login.LoginActivity;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -18,6 +25,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
 
         //Hides status bar
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -32,6 +42,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 startActivity(i);
+                finish();
             }
         }, 1000);
     }

@@ -48,8 +48,9 @@
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <EditText
+                android:id="@+id/email_et"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="2dp" />
 
 

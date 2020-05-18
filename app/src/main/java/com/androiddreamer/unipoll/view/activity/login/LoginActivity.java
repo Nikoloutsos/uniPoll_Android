@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.view.activity;
+package com.androiddreamer.unipoll.view.activity.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.viewModel.LoginViewModel;
 import com.androiddreamer.unipoll.databinding.ActivityLoginBinding;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -13,7 +13,9 @@ public class UDHelper {
     public static final String KEY_EMAIL = "key_email";
     public static final String KEY_ECLASS_USERNAME = "key_eclass_username";
     public static final String KEY_ECLASS_PASS = "key_eclass_pass";
-    public static final String KEY_STUDENT_ID = "key_student_id";
+    public static final String KEY_USER_ID = "key_student_id";
+    public static final String KEY_IS_SUPER_USER = "key_is_super_user";
+    public static final String KEY_FIREBASE_TOKEN = "key_firebase_token";
 
     private Context context;
     private SharedPreferences pref;

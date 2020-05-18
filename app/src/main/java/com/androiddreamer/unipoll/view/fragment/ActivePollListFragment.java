@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -14,7 +16,9 @@ import android.view.ViewGroup;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentPollListBinding;
 import com.androiddreamer.unipoll.util.JavaUtil;
+import com.androiddreamer.unipoll.util.SwiftyJSONObject;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
+import com.androiddreamer.unipoll.viewModel.ActivePollsFragmentViewModel;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -31,6 +35,7 @@ import java.util.ArrayList;
 public class ActivePollListFragment extends Fragment {
 
     FragmentPollListBinding binding;
+    ActivePollsFragmentViewModel viewModel;
 
     public ActivePollListFragment() {
         // Required empty public constructor
@@ -41,16 +46,26 @@ public class ActivePollListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_poll_list, container, false);
+        viewModel = ViewModelProviders.of(this).get(ActivePollsFragmentViewModel.class);
 
-        binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        viewModel.callGetActivePolls().observe(this, new Observer<SwiftyJSONObject>() {
+            @Override
+            public void onChanged(SwiftyJSONObject swiftyJSONObject) {
+                if (swiftyJSONObject == null) return;
+                updateUI(swiftyJSONObject);
+            }
+        });
 
-
-        PollListAdapter adapter = new PollListAdapter(JavaUtil.getMockPollList(), getActivity());
-        binding.pollsRv.setAdapter(adapter);
-
-//        loadPieData();
+//        binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        PollListAdapter adapter = new PollListAdapter(JavaUtil.getMockPollList(), getActivity());
+//        binding.pollsRv.setAdapter(adapter);
         return binding.getRoot();
     }
+
+    private void updateUI(SwiftyJSONObject swiftyJSONObject) {
+        
+    }
+
 
     private void loadPieData() {
 

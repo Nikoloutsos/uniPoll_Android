@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
-import com.androiddreamer.unipoll.model.network.RetrofitConfig;
+import com.androiddreamer.unipoll.network.RetrofitConfig;
 
 import java.io.IOException;
 
@@ -33,23 +33,23 @@ public class EclassLoginViewModel extends ViewModel {
      */
     public void signWithEclass(String username, String password, String deviceToken){
         //TODO send api request
-        RetrofitConfig.callApi().loginWithEclass(username, password, deviceToken).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    String responseString = response.body().string();
-                    liveDataWaitSpinner.setValue(responseString);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                liveDataError.setValue(true);
-            }
-        });
+//        RetrofitConfig.callApi().loginWithEclass(username, password, deviceToken).enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                try {
+//                    String responseString = response.body().string();
+//                    liveDataWaitSpinner.setValue(responseString);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                liveDataError.setValue(true);
+//            }
+//        });
     }
 
     /**
