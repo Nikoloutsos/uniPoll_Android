@@ -1,11 +1,9 @@
 package com.androiddreamer.unipoll.view.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -15,29 +13,15 @@ import android.view.ViewGroup;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentPollListBinding;
-import com.androiddreamer.unipoll.util.JavaUtil;
-import com.androiddreamer.unipoll.util.SwiftyJSONObject;
 import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
-import com.androiddreamer.unipoll.viewModel.ActivePollsFragmentViewModel;
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.androiddreamer.unipoll.viewModel.PollsViewModel;
 
 
 public class ActivePollListFragment extends Fragment {
 
     FragmentPollListBinding binding;
-    ActivePollsFragmentViewModel viewModel;
+    PollsViewModel viewModel;
 
     public ActivePollListFragment() {
         // Required empty public constructor
@@ -48,7 +32,7 @@ public class ActivePollListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_poll_list, container, false);
-        viewModel = ViewModelProviders.of(this).get(ActivePollsFragmentViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(PollsViewModel.class);
 
         return binding.getRoot();
     }
@@ -60,7 +44,7 @@ public class ActivePollListFragment extends Fragment {
 
         UDHelper udHelper = new UDHelper(getActivity().getApplicationContext());
 
-        viewModel.callGetPolls(udHelper.getString(UDHelper.KEY_USER_ID)).observe(this,
+        viewModel.callGetActivePolls(udHelper.getString(UDHelper.KEY_USER_ID)).observe(this,
                 jsonObjects -> {
                     if (jsonObjects == null) return;
                     binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
