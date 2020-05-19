@@ -1,6 +1,7 @@
 package com.androiddreamer.unipoll.view.fragment;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -12,13 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentCompletedPollListBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
+import com.androiddreamer.unipoll.view.activity.PollDetail;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
 import com.androiddreamer.unipoll.viewModel.PollsViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -26,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CompletedPollListFragment extends Fragment {
+public class CompletedPollListFragment extends Fragment implements PollListAdapter.OnItemClickedListener {
     FragmentCompletedPollListBinding binding;
     PollsViewModel viewModel;
 
@@ -54,8 +58,20 @@ public class CompletedPollListFragment extends Fragment {
                     public void onChanged(List<JSONObject> jsonObjects) {
                         if (jsonObjects == null) return;
                         binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                        binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity()));
+                        binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity(), CompletedPollListFragment.this));
                     }
                 });
+    }
+
+    @Override
+    public void onItemClicked(JSONObject item) {
+        try {
+            Intent intent = new Intent(getActivity(), PollDetail.class);
+            intent.putExtra("isCompletedPoll", true);
+            intent.putExtra("id", item.getInt("id"));
+            getActivity().startActivity(intent);
+        } catch (JSONException e) {
+            Toast.makeText(getActivity(), "Cannot open poll for some unexpected reason", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -27,10 +28,12 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     List<JSONObject> data;
     Context context;
+    OnItemClickedListener onItemClickedListener;
 
-    public PollListAdapter(List<JSONObject> data, Context context) {
+    public PollListAdapter(List<JSONObject> data, Context context, OnItemClickedListener onItemClickListener) {
         this.data = data;
         this.context = context;
+        this.onItemClickedListener = onItemClickListener;
     }
 
 
@@ -64,19 +67,10 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         }
 
-
-
         binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    Intent intent = new Intent(context, PollDetail.class);
-                    intent.putExtra("id", item.getInt("id"));
-                    context.startActivity(intent);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                onItemClickedListener.onItemClicked(item);
             }
         });
 
@@ -98,5 +92,10 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(itemView);
             binding = DataBindingUtil.bind(itemView);
         }
+    }
+
+
+    public interface OnItemClickedListener{
+        void onItemClicked(JSONObject item);
     }
 }

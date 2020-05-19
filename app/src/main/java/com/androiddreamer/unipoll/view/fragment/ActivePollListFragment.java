@@ -1,5 +1,6 @@
 package com.androiddreamer.unipoll.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -10,15 +11,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentPollListBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
+import com.androiddreamer.unipoll.view.activity.PollDetail;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
 import com.androiddreamer.unipoll.viewModel.PollsViewModel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ActivePollListFragment extends Fragment {
+
+public class ActivePollListFragment extends Fragment implements PollListAdapter.OnItemClickedListener {
 
     FragmentPollListBinding binding;
     PollsViewModel viewModel;
@@ -48,7 +54,7 @@ public class ActivePollListFragment extends Fragment {
                 jsonObjects -> {
                     if (jsonObjects == null) return;
                     binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity()));
+                    binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity(), ActivePollListFragment.this));
                 });
     }
 
@@ -86,5 +92,16 @@ public class ActivePollListFragment extends Fragment {
 //        PieData pieData = new PieData(set);
 //        pieChart.setData(pieData);
 //        pieChart.spin(800, 0, -360f, Easing.EaseInOutQuad);
+    }
+
+    @Override
+    public void onItemClicked(JSONObject item) {
+        try {
+            Intent intent = new Intent(getActivity(), PollDetail.class);
+            intent.putExtra("id", item.getInt("id"));
+            getActivity().startActivity(intent);
+        } catch (JSONException e) {
+            Toast.makeText(getActivity(), "Cannot open poll for some unexpected reason", Toast.LENGTH_SHORT).show();
+        }
     }
 }
