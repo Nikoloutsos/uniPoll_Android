@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityMainBinding;
 import com.androiddreamer.unipoll.view.fragment.ActivePollListFragment;
 import com.androiddreamer.unipoll.view.fragment.CompletedPollListFragment;
 import com.androiddreamer.unipoll.view.fragment.ProfileFragment;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("pokemon", "onCreate: " + FirebaseInstanceId.getInstance().getToken());
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
