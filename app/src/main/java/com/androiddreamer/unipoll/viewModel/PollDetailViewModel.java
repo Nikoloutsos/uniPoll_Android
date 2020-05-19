@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.androiddreamer.unipoll.network.RetrofitConfig;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
@@ -33,6 +35,33 @@ public class PollDetailViewModel extends ViewModel {
                 Log.d("test", "onFailure: ");
             }
         });
+        return liveData;
+    }
+
+
+    public LiveData<Boolean> vote(String userId, int pollId, int optionId){
+        MutableLiveData<Boolean> liveData = new MutableLiveData<>();
+        RetrofitConfig.callApi().vote(userId, pollId, optionId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    if(jsonObject.getInt("status") == 1){
+                        liveData.postValue(true);
+                    }else{
+                        liveData.postValue(false);
+                    }
+                }catch (Exception e){
+                    liveData.postValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                liveData.postValue(false);
+            }
+        });
+
         return liveData;
     }
 }

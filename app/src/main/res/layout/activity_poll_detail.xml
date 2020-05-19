@@ -14,14 +14,6 @@
         android:background="#333333">
 
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pieChart"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
@@ -38,46 +30,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <CheckBox
-            android:id="@+id/option1"
-            style="@style/Theme.AppCompat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="#ffffff"
-            android:text="Microsoft teams"
-            android:textColor="#ffffff"
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintTop_toBottomOf="@+id/pieChart"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0">
 
-        <CheckBox
-            android:id="@+id/option2"
-            style="@style/Theme.AppCompat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="#ffffff"
-            android:text="Skype for business"
-            android:textColor="#ffffff"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option1"
-            android:layout_marginTop="4dp"/>
+            <LinearLayout
+                android:id="@+id/options_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+        </ScrollView>
 
-        <CheckBox
-            android:id="@+id/option3"
-            style="@style/Theme.AppCompat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="#ffffff"
-            android:text="Other"
-            android:textColor="#ffffff"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option2"
-            android:layout_marginTop="4dp"/>
+
 
         <Button
+            android:id="@+id/button3"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/rounded_button_shape_login_email"
             android:fontFamily="@font/roboto_bold"
             android:text="VOTE"
@@ -85,8 +69,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option3" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

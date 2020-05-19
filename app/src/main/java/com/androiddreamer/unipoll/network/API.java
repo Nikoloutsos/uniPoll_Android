@@ -34,6 +34,15 @@ public interface API {
     );
 
     @FormUrlEncoded
+    @POST(PREFIX + "app/add_vote.php")
+    Call<ResponseBody> vote(
+            @Field("user_id") String userId,
+            @Field("poll_id") int pollId,
+            @Field("option_id") int optionId
+
+    );
+
+    @FormUrlEncoded
     @POST(PREFIX + "app/get_user_polls.php")
     Call<ResponseBody> getUserPolls(
             @Field("user_id") String userId
