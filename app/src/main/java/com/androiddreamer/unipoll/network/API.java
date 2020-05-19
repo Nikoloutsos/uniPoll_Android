@@ -26,7 +26,18 @@ public interface API {
             @Field("token") String pushNotificationToken
     );
 
+    @FormUrlEncoded
+    @POST(PREFIX + "app/get_poll_details.php")
+    Call<ResponseBody> getPollDetails(
+            @Field("user_id") String userId,
+            @Field("poll_id") int pollId
+    );
 
+    @FormUrlEncoded
+    @POST(PREFIX + "app/get_user_polls.php")
+    Call<ResponseBody> getUserPolls(
+            @Field("user_id") String userId
+    );
 
     @GET("get_active_polls.php")
     Call<ResponseBody> getActivePolls(
@@ -36,12 +47,6 @@ public interface API {
     @GET("get_completed_polls.php")
     Call<ResponseBody> getCompletedPolls(
             @Query("user_id") String userId
-    );
-
-    @GET("get_poll_details.php")
-    Call<ResponseBody> getPollDetails(
-            @Query("user_id") String userId,
-            @Query("poll_id") int PollId
     );
 
     @GET("get_pin_for_email_authentication.php")

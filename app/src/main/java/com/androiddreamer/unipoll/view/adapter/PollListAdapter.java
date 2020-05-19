@@ -15,6 +15,7 @@ import com.androiddreamer.unipoll.databinding.LayoutPollListItemBinding;
 import com.androiddreamer.unipoll.view.activity.PollDetail;
 import com.androiddreamer.unipoll.view.fragment.ActivePollListFragment;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -49,22 +50,14 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         try{
             binding.textView5.setText(item.getString("title"));
 
-            String tag1 = item.getJSONArray("tags").getString(0);
-            String tag2 = item.getJSONArray("tags").getString(1);
+            String tag1 = item.getString("tag");
 
             binding.chip.setText(tag1);
-            binding.chip2.setText(tag2);
+            binding.chip2.setVisibility(View.GONE);
 
             binding.textView6.setText(item.getString("author"));
 
-            double a = Math.random();
-            if(a>0.6){
-                binding.badgeNew.setVisibility(View.GONE);
-            }
 
-            if(item.getString("author").equalsIgnoreCase("miss jen")){
-                binding.icSex.setBackgroundResource(R.drawable.ic_teacher_woman);
-            }
 
 
         }catch (Exception e){
@@ -76,7 +69,14 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, PollDetail.class));
+                try {
+                    Intent intent = new Intent(context, PollDetail.class);
+                    intent.putExtra("id", item.getInt("id"));
+                    context.startActivity(intent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 

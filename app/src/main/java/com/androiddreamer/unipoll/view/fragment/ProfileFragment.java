@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentProfileBinding;
 import com.androiddreamer.unipoll.util.SwiftyJSONObject;
+import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.viewModel.ProfileFragmentViewModel;
 
 import org.json.JSONObject;
@@ -35,14 +36,9 @@ public class ProfileFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         viewModel = ViewModelProviders.of(this).get(ProfileFragmentViewModel.class);
 
-        viewModel.callGetProfileData().observe(this, new Observer<SwiftyJSONObject>() {
-            @Override
-            public void onChanged(SwiftyJSONObject jsonObject) {
-                if(jsonObject == null) return;
-                binding.nicknameValueTv.setText(jsonObject.getString("nickname"));
-                binding.universityValueTv.setText(jsonObject.getString("university"));
-            }
-        });
+        UDHelper udHelper = new UDHelper(getActivity());
+        String userId = udHelper.getString(UDHelper.KEY_USER_ID);
+        binding.nicknameValueTv.setText(userId);
 
         return binding.getRoot();
     }

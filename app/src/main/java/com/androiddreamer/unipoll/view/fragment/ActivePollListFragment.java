@@ -17,6 +17,7 @@ import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentPollListBinding;
 import com.androiddreamer.unipoll.util.JavaUtil;
 import com.androiddreamer.unipoll.util.SwiftyJSONObject;
+import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
 import com.androiddreamer.unipoll.viewModel.ActivePollsFragmentViewModel;
 import com.github.mikephil.charting.animation.Easing;
@@ -30,6 +31,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ActivePollListFragment extends Fragment {
@@ -48,24 +50,23 @@ public class ActivePollListFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_poll_list, container, false);
         viewModel = ViewModelProviders.of(this).get(ActivePollsFragmentViewModel.class);
 
-        viewModel.callGetActivePolls().observe(this, new Observer<SwiftyJSONObject>() {
-            @Override
-            public void onChanged(SwiftyJSONObject swiftyJSONObject) {
-                if (swiftyJSONObject == null) return;
-                updateUI(swiftyJSONObject);
-            }
-        });
-
-//        binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        PollListAdapter adapter = new PollListAdapter(JavaUtil.getMockPollList(), getActivity());
-//        binding.pollsRv.setAdapter(adapter);
         return binding.getRoot();
     }
 
-    private void updateUI(SwiftyJSONObject swiftyJSONObject) {
-        
-    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        UDHelper udHelper = new UDHelper(getActivity().getApplicationContext());
+
+        viewModel.callGetPolls(udHelper.getString(UDHelper.KEY_USER_ID)).observe(this,
+                jsonObjects -> {
+                    if (jsonObjects == null) return;
+                    binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity()));
+                });
+    }
 
     private void loadPieData() {
 

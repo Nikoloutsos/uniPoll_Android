@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.androiddreamer.unipoll.R;
+import com.androiddreamer.unipoll.util.UDHelper;
+import com.androiddreamer.unipoll.view.activity.MainActivity;
 import com.androiddreamer.unipoll.viewModel.LoginViewModel;
 import com.androiddreamer.unipoll.databinding.ActivityLoginBinding;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -43,5 +45,19 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, EmailLoginActivity.class));
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        UDHelper udHelper = new UDHelper(getApplicationContext());
+        String userId = udHelper.getString(UDHelper.KEY_USER_ID);
+        if(!userId.isEmpty()){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+
     }
 }
