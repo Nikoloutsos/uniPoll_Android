@@ -1,11 +1,9 @@
 package com.androiddreamer.unipoll.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -13,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.LayoutPollListItemBinding;
-import com.androiddreamer.unipoll.view.activity.PollDetail;
 import com.androiddreamer.unipoll.view.fragment.ActivePollListFragment;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -24,7 +20,7 @@ import java.util.List;
 /**
  * Adapter for populating recyclerView in {@link ActivePollListFragment}
  */
-public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<JSONObject> data;
     Context context;
@@ -50,7 +46,7 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         LayoutPollListItemBinding binding = viewHolder.binding;
         JSONObject item = data.get(position);
 
-        try{
+        try {
             binding.textView5.setText(item.getString("title"));
 
             String tag1 = item.getString("tag");
@@ -61,9 +57,7 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             binding.textView6.setText(item.getString("author"));
 
 
-
-
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -82,6 +76,10 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
+    public interface OnItemClickedListener {
+        void onItemClicked(JSONObject item);
+    }
+
     /**
      * ViewHolder holds data for state of cell-row in recyclerView
      */
@@ -92,10 +90,5 @@ public class PollListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(itemView);
             binding = DataBindingUtil.bind(itemView);
         }
-    }
-
-
-    public interface OnItemClickedListener{
-        void onItemClicked(JSONObject item);
     }
 }

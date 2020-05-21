@@ -1,19 +1,18 @@
 package com.androiddreamer.unipoll.view.activity.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
-import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.activity.MainActivity;
 import com.androiddreamer.unipoll.viewModel.EclassLoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
@@ -74,7 +73,7 @@ public class EclassLogInActivity extends AppCompatActivity {
     }
 
 
-    private void showSnackbarWrongCredentials(){
+    private void showSnackbarWrongCredentials() {
         View root = binding.getRoot();
         Snackbar snackbar = Snackbar
                 .make(root, "Wrong username or password", Snackbar.LENGTH_SHORT);
@@ -82,15 +81,14 @@ public class EclassLogInActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    private void toggleLoadingSpinner(boolean b){
-        if(b){
+    private void toggleLoadingSpinner(boolean b) {
+        if (b) {
             progressDialog.show();
-        }else{
+        } else {
             progressDialog.hide();
         }
 
     }
-
 
 
 }

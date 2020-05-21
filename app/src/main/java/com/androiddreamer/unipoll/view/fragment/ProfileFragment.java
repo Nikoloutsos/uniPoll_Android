@@ -1,23 +1,18 @@
 package com.androiddreamer.unipoll.view.fragment;
 
 import android.os.Bundle;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentProfileBinding;
-import com.androiddreamer.unipoll.util.SwiftyJSONObject;
 import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.viewModel.ProfileFragmentViewModel;
-
-import org.json.JSONObject;
 
 
 public class ProfileFragment extends Fragment {

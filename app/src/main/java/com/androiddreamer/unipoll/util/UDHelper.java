@@ -22,7 +22,6 @@ public class UDHelper {
 
 
     /**
-     *
      * @param context used for accessing sharedPreferences
      */
     public UDHelper(Context context) {
@@ -33,38 +32,34 @@ public class UDHelper {
 
 
     /**
-     *
      * @param keyIdentifier
-     * @param value the new value to be stored
+     * @param value         the new value to be stored
      */
-    public void setString(String keyIdentifier, String value){
+    public void setString(String keyIdentifier, String value) {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(keyIdentifier, value);
         editor.apply();
     }
 
     /**
-     *
      * @param keyIdentifier
-     * @param value the new value to be stored
+     * @param value         the new value to be stored
      */
-    public void setInt(String keyIdentifier, int value){
+    public void setInt(String keyIdentifier, int value) {
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt(keyIdentifier, value);
         editor.apply();
     }
 
 
-    public String getString(String keyIdentifier){
+    public String getString(String keyIdentifier) {
         return pref.getString(keyIdentifier, "");
     }
 
 
-    public int getInt(String keyIdentifier){
+    public int getInt(String keyIdentifier) {
         return pref.getInt(keyIdentifier, Integer.MAX_VALUE);
     }
-
-
 
 
 }

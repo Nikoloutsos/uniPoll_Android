@@ -35,7 +35,7 @@ public class PollsViewModel extends ViewModel {
     /**
      * Network calls
      */
-    public LiveData<List<JSONObject>> callGetActivePolls(String userId){
+    public LiveData<List<JSONObject>> callGetActivePolls(String userId) {
         MutableLiveData<List<JSONObject>> liveData = new MutableLiveData<>();
 
         RetrofitConfig.callApi().getUserPolls(userId).enqueue(new Callback<ResponseBody>() {
@@ -70,7 +70,7 @@ public class PollsViewModel extends ViewModel {
         return list;
     }
 
-    public LiveData<List<JSONObject>> callGetCompletedPolls(String userId){
+    public LiveData<List<JSONObject>> callGetCompletedPolls(String userId) {
         MutableLiveData<List<JSONObject>> liveData = new MutableLiveData<>();
 
         RetrofitConfig.callApi().getUserPolls(userId).enqueue(new Callback<ResponseBody>() {
@@ -104,8 +104,6 @@ public class PollsViewModel extends ViewModel {
 
         return list;
     }
-
-
 
 
 }

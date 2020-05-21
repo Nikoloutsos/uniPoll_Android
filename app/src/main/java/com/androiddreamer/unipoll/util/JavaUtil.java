@@ -10,7 +10,7 @@ import java.util.List;
 public class JavaUtil {
 
 
-    public static final String getJsonValue(JSONObject json, String key){
+    public static final String getJsonValue(JSONObject json, String key) {
         try {
             return json.getString(key);
         } catch (JSONException e) {
@@ -18,7 +18,7 @@ public class JavaUtil {
         }
     }
 
-    public static List<JSONObject> getMockPollList(){
+    public static List<JSONObject> getMockPollList() {
         String mock = "{\n" +
                 "    \"status\" : 1,\n" +
                 "    \"data\":[\n" +
@@ -56,11 +56,11 @@ public class JavaUtil {
             JSONArray data = j.getJSONArray("data");
 
             ArrayList<JSONObject> result = new ArrayList<>();
-            for (int i = 0; i < data.length() ; i++) {
+            for (int i = 0; i < data.length(); i++) {
                 result.add(data.getJSONObject(i));
             }
             return result;
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
 

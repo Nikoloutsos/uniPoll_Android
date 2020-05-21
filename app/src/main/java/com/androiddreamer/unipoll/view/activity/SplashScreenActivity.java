@@ -1,22 +1,16 @@
 package com.androiddreamer.unipoll.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.SplashScreenBinding;
-import com.androiddreamer.unipoll.network.RetrofitConfig;
 import com.androiddreamer.unipoll.view.activity.login.LoginActivity;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -25,8 +19,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
 
         //Hides status bar

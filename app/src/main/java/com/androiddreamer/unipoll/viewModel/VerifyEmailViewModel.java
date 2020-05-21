@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class VerifyEmailViewModel extends ViewModel {
 
-    public LiveData<String> getPINForAuthenticateEmail(String email){
+    public LiveData<String> getPINForAuthenticateEmail(String email) {
         MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
         RetrofitConfig.callApi().getAndSendAuthPinEmail(email).enqueue(new Callback<ResponseBody>() {
             @Override
@@ -38,7 +38,7 @@ public class VerifyEmailViewModel extends ViewModel {
         return mutableLiveData;
     }
 
-    public LiveData<String> sendPinInsertedSuccessfullyToServer(String email, String fcmToken){
+    public LiveData<String> sendPinInsertedSuccessfullyToServer(String email, String fcmToken) {
         MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
         RetrofitConfig.callApi().sendSuccesfullPINToServer(email, fcmToken).enqueue(new Callback<ResponseBody>() {
             @Override

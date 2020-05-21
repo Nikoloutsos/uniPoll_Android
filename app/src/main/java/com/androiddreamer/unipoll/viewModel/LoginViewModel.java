@@ -11,7 +11,7 @@ public class LoginViewModel extends ViewModel {
     private ActivityLoginBinding binding;
     private Context context;
 
-    public void bindActivity(Context context, ActivityLoginBinding binding){
+    public void bindActivity(Context context, ActivityLoginBinding binding) {
         this.context = context;
         this.binding = binding;
     }

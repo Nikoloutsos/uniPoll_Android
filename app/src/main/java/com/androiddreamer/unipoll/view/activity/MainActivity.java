@@ -1,11 +1,11 @@
 package com.androiddreamer.unipoll.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityMainBinding;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NotNull AnimatedBottomBar.Tab tab1) {
-                switch (i1){
+                switch (i1) {
                     case 0:
                         ActivePollListFragment activePollListFragment = new ActivePollListFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, activePollListFragment, "0").commit();

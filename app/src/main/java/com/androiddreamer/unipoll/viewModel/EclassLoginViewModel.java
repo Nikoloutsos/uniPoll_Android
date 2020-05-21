@@ -7,14 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
-import com.androiddreamer.unipoll.network.RetrofitConfig;
-
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class EclassLoginViewModel extends ViewModel {
 
@@ -26,12 +18,12 @@ public class EclassLoginViewModel extends ViewModel {
      */
     private MutableLiveData<Boolean> liveDataUserConnectedInfo = new MutableLiveData<>();
     private MutableLiveData<Boolean> liveDataError = new MutableLiveData<>();
-    private MutableLiveData<String>  liveDataWaitSpinner = new MutableLiveData<>();
+    private MutableLiveData<String> liveDataWaitSpinner = new MutableLiveData<>();
 
     /**
      * Business logic
      */
-    public void signWithEclass(String username, String password, String deviceToken){
+    public void signWithEclass(String username, String password, String deviceToken) {
         //TODO send api request
 //        RetrofitConfig.callApi().loginWithEclass(username, password, deviceToken).enqueue(new Callback<ResponseBody>() {
 //            @Override
@@ -55,17 +47,17 @@ public class EclassLoginViewModel extends ViewModel {
     /**
      * Getter for livedata
      */
-    public LiveData<Boolean> getLiveDataUserConnectedInfo(){
+    public LiveData<Boolean> getLiveDataUserConnectedInfo() {
         return liveDataUserConnectedInfo;
     }
-    public LiveData<Boolean> getLiveDataError(){
+
+    public LiveData<Boolean> getLiveDataError() {
         return liveDataError;
     }
-    public LiveData<String> getLiveDataWaitSpinner(){
+
+    public LiveData<String> getLiveDataWaitSpinner() {
         return liveDataWaitSpinner;
     }
-
-
 
 
 }

@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class PollDetailViewModel extends ViewModel {
 
-    public LiveData<String> getPollDetails( String userId, int pollId){
+    public LiveData<String> getPollDetails(String userId, int pollId) {
         MutableLiveData<String> liveData = new MutableLiveData<>();
         RetrofitConfig.callApi().getPollDetails(userId, pollId).enqueue(new Callback<ResponseBody>() {
             @Override
@@ -30,6 +30,7 @@ public class PollDetailViewModel extends ViewModel {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d("test", "onFailure: ");
@@ -39,19 +40,19 @@ public class PollDetailViewModel extends ViewModel {
     }
 
 
-    public LiveData<Boolean> vote(String userId, int pollId, int optionId){
+    public LiveData<Boolean> vote(String userId, int pollId, int optionId) {
         MutableLiveData<Boolean> liveData = new MutableLiveData<>();
         RetrofitConfig.callApi().vote(userId, pollId, optionId).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response.body().string());
-                    if(jsonObject.getInt("status") == 1){
+                    if (jsonObject.getInt("status") == 1) {
                         liveData.postValue(true);
-                    }else{
+                    } else {
                         liveData.postValue(false);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     liveData.postValue(false);
                 }
             }
