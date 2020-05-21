@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".view.activity.SuperUserMenu"></activity>
+        <activity android:name=".view.activity.CreatePollActivity"></activity>
+        <activity android:name=".view.activity.SuperUserMenuActivity" />
         <activity android:name=".view.activity.PollDetail" />
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.login.VerifyEmailActivity" />
@@ -28,10 +29,9 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".util.FirebaseService">
+        <service android:name=".util.FirebaseService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service

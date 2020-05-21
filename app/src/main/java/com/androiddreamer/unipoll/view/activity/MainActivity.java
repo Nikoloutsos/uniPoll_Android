@@ -3,6 +3,7 @@ package com.androiddreamer.unipoll.view.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         initBottomNavigationBar();
+
+        startActivity(new Intent(this, SuperUserMenuActivity.class));
 
         ActivePollListFragment activePollListFragment = new ActivePollListFragment();
         getSupportFragmentManager().beginTransaction().add(binding.fragmentHolder.getId(), activePollListFragment, "0").commit();

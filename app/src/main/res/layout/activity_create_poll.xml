@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.CreatePollActivity"
+        android:background="#333333">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/question_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Question"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <EditText
+                        android:id="@+id/question_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="Type your question..."
+                        android:background="#ffffff"
+                        android:layout_margin="4dp"
+                        android:lines="3"
+                        android:gravity="top"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/choices_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Answers"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"/>
+
+                <LinearLayout
+                    android:id="@+id/options_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <include layout="@layout/leyout_add_option"/>
+                    <include layout="@layout/leyout_add_option"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="16dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_add"/>
+
+                    <TextView
+                        android:id="@+id/add_answear_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Add answer"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_gravity="center"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/expiration_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Expiration time"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"/>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <EditText
+                        android:id="@+id/exp_time_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="Saturday, 22 april 2020"
+                        android:background="#ffffff"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:lines="2"
+                        android:gravity="center|left"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/group_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Group target"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"/>
+
+                <Spinner
+                    android:id="@+id/group_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ffffff"
+                    android:layout_marginLeft="16dp"
+                    />
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_shape_login_eclass"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Create poll"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="45dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="32dp"
+                    />
+"
+
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
