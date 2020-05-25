@@ -39,14 +39,6 @@ public class ActivePollListFragment extends Fragment implements PollListAdapter.
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_poll_list, container, false);
         viewModel = ViewModelProviders.of(this).get(PollsViewModel.class);
 
-        return binding.getRoot();
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
         UDHelper udHelper = new UDHelper(getActivity().getApplicationContext());
 
         viewModel.callGetActivePolls(udHelper.getString(UDHelper.KEY_USER_ID)).observe(this,
@@ -55,10 +47,11 @@ public class ActivePollListFragment extends Fragment implements PollListAdapter.
                     binding.pollsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
                     binding.pollsRv.setAdapter(new PollListAdapter(jsonObjects, getActivity(), ActivePollListFragment.this));
                 });
+
+        return binding.getRoot();
     }
 
     private void loadPieData() {
-
 //        PieChart pieChart = binding.pieChart;
 //        pieChart.getDescription().setEnabled(false);
 //        pieChart.setExtraOffsets(5,10,5, 5);

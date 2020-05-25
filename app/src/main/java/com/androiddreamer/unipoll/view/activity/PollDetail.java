@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ public class PollDetail extends AppCompatActivity {
     PollDetailViewModel viewModel;
     int pollId;
     RadioGroup optionsRadioGroup;
+    List<RadioButton> radioButtonList = new ArrayList<>();
+    Integer selectedOptionId;
 
 
     @Override
@@ -42,11 +45,11 @@ public class PollDetail extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(PollDetailViewModel.class);
 
         pollId = getIntent().getExtras().getInt("id");
-        binding.button3.setOnClickListener(new View.OnClickListener() {
+        binding.voteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UDHelper udHelper = new UDHelper(getApplicationContext());
-                viewModel.vote(udHelper.getString(UDHelper.KEY_USER_ID), pollId, optionsRadioGroup.getCheckedRadioButtonId())
+                viewModel.vote(udHelper.getString(UDHelper.KEY_USER_ID), pollId, selectedOptionId)
                         .observe(PollDetail.this, new Observer<Boolean>() {
                             @Override
                             public void onChanged(Boolean aBoolean) {
@@ -61,12 +64,7 @@ public class PollDetail extends AppCompatActivity {
                         });
             }
         });
-    }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         UDHelper udHelper = new UDHelper(getApplicationContext());
         viewModel.getPollDetails(udHelper.getString(UDHelper.KEY_USER_ID), pollId).observe(this,
@@ -84,8 +82,8 @@ public class PollDetail extends AppCompatActivity {
                         }
                     }
                 });
-
     }
+
 
 
     private void renderVoteOptions(JSONObject jsonObject) {
@@ -107,9 +105,18 @@ public class PollDetail extends AppCompatActivity {
                 radioButton.setTypeface(typeface);
                 radioButton.setText(optionStringList.get(i));
                 optionsRadioGroup.addView(radioButton);
+                radioButtonList.add(radioButton);
+                int finalI = i;
+                radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(isChecked){
+                            selectedOptionId = finalI + 1;
+                        }
+                    }
+                });
             }
             binding.optionsLl.addView(optionsRadioGroup);
-
 
             int user_vote_id = jsonObject.getInt("user_vote_id");
             if(user_vote_id != 0){
@@ -120,16 +127,12 @@ public class PollDetail extends AppCompatActivity {
                         childAt.setChecked(true);
                     }
                 }
-
-                binding.button3.setVisibility(View.GONE);
+                binding.voteBtn.setVisibility(View.GONE);
             }else{
                 binding.alreadyVotedTV.setVisibility(View.GONE);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }
