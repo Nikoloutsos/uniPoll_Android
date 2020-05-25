@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.view.activity.login;
+package com.androiddreamer.unipoll.view.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,9 +13,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityEclassLogInBinding;
+import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.activity.MainActivity;
 import com.androiddreamer.unipoll.viewModel.EclassLoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.json.JSONObject;
 
 public class EclassLogInActivity extends AppCompatActivity {
 
@@ -65,8 +69,33 @@ public class EclassLogInActivity extends AppCompatActivity {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = binding.emailEt.getText().toString();
+                String password = binding.passwordEclassEt.getText().toString();
 
-                startActivity(new Intent(EclassLogInActivity.this, MainActivity.class));
+                if(email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(EclassLogInActivity.this, "Please write your email and password to login with eclass", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                viewModel.signInWithEclass(email, password, FirebaseInstanceId.getInstance().getToken()).observe(EclassLogInActivity.this,
+                        new Observer<JSONObject>() {
+                            @Override
+                            public void onChanged(JSONObject jsonObject) {
+                                if (jsonObject == null) return;
+                                try{
+                                    int status = jsonObject.getInt("status");
+                                    if(status == 1){
+                                        UDHelper udHelper = new UDHelper(getApplicationContext());
+                                        udHelper.setString(UDHelper.KEY_USER_ID, jsonObject.getString("user_id"));
+                                        udHelper.setInt(UDHelper.KEY_IS_SUPER_USER, jsonObject.getInt("is_super_user"));
+                                        startActivity(new Intent(EclassLogInActivity.this, MainActivity.class));
+                                    }else{
+                                        Toast.makeText(EclassLogInActivity.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
+                                    }
+                                }catch (Exception e){
+
+                                }
+                            }
+                        });
             }
         });
 

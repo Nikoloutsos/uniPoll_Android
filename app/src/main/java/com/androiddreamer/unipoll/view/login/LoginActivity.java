@@ -1,4 +1,4 @@
-package com.androiddreamer.unipoll.view.activity.login;
+package com.androiddreamer.unipoll.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;

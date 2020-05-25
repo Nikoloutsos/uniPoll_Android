@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.SplashScreenBinding;
-import com.androiddreamer.unipoll.view.activity.login.LoginActivity;
+import com.androiddreamer.unipoll.view.login.LoginActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

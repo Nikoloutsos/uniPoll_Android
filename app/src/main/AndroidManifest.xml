@@ -13,14 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".view.activity.CreatePollActivity"></activity>
+        <activity android:name=".view.activity.CompletePollDetailActivity"></activity>
+        <activity android:name=".view.activity.CreatePollActivity" />
         <activity android:name=".view.activity.SuperUserMenuActivity" />
         <activity android:name=".view.activity.PollDetail" />
         <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.login.VerifyEmailActivity" />
-        <activity android:name=".view.activity.login.EmailLoginActivity" />
-        <activity android:name=".view.activity.login.EclassLogInActivity" />
-        <activity android:name=".view.activity.login.LoginActivity" />
+        <activity android:name=".view.login.VerifyEmailActivity" />
+        <activity android:name=".view.login.EmailLoginActivity" />
+        <activity android:name=".view.login.EclassLogInActivity" />
+        <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

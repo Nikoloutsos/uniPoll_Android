@@ -64,4 +64,7 @@ dependencies {
     // ChipView
     implementation 'com.robertlevonyan.view:MaterialChipView:2.0.4'
 
+    // Date picker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
 }

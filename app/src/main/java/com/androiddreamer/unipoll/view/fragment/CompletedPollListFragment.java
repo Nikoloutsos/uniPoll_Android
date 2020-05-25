@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentCompletedPollListBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
+import com.androiddreamer.unipoll.view.activity.CompletePollDetailActivity;
 import com.androiddreamer.unipoll.view.activity.PollDetail;
 import com.androiddreamer.unipoll.view.adapter.PollListAdapter;
 import com.androiddreamer.unipoll.viewModel.PollsViewModel;
@@ -64,8 +65,7 @@ public class CompletedPollListFragment extends Fragment implements PollListAdapt
     @Override
     public void onItemClicked(JSONObject item) {
         try {
-            Intent intent = new Intent(getActivity(), PollDetail.class);
-            intent.putExtra("isCompletedPoll", true);
+            Intent intent = new Intent(getActivity(), CompletePollDetailActivity.class);
             intent.putExtra("id", item.getInt("id"));
             getActivity().startActivity(intent);
         } catch (JSONException e) {

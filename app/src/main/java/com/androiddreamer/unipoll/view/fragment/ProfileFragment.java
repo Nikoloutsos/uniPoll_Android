@@ -12,13 +12,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentProfileBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
-import com.androiddreamer.unipoll.viewModel.ProfileFragmentViewModel;
 
 
 public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding binding;
-    ProfileFragmentViewModel viewModel;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -29,8 +27,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
-        viewModel = ViewModelProviders.of(this).get(ProfileFragmentViewModel.class);
-
         UDHelper udHelper = new UDHelper(getActivity());
         String userId = udHelper.getString(UDHelper.KEY_USER_ID);
         binding.nicknameValueTv.setText(userId);

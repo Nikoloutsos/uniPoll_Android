@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.CreatePollActivity"
-        android:background="#333333">
+        android:background="#333333"
+        tools:context=".view.activity.CreatePollActivity">
 
 
         <ScrollView
@@ -29,72 +29,73 @@
                     android:id="@+id/question_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Question"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="16dp"/>
+                    android:textSize="20sp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="6dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp">
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="6dp">
 
                     <EditText
                         android:id="@+id/question_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Type your question..."
-                        android:background="#ffffff"
                         android:layout_margin="4dp"
-                        android:lines="3"
-                        android:gravity="top"/>
+                        android:background="#ffffff"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="top"
+                        android:hint="Type your question..."
+                        android:lines="3" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/choices_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Answers"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:id="@+id/options_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <include layout="@layout/leyout_add_option"/>
-                    <include layout="@layout/leyout_add_option"/>
+
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/add_new_answer_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="16dp">
+                    android:layout_marginLeft="16dp"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_add"/>
+                        android:src="@drawable/ic_add" />
 
                     <TextView
                         android:id="@+id/add_answear_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Add answer"
                         android:textColor="#ffffff"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_gravity="center"/>
+                        android:textSize="20sp" />
 
 
                 </LinearLayout>
@@ -103,74 +104,83 @@
                     android:id="@+id/expiration_time_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Expiration time"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Expiration date"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="6dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp">
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="6dp">
 
                     <EditText
                         android:id="@+id/exp_time_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Saturday, 22 april 2020"
-                        android:background="#ffffff"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
-                        android:lines="2"
-                        android:gravity="center|left"/>
+                        android:background="#ffffff"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center|left"
+                        android:hint="Click to insert date"
+                        android:focusable="false"
+                        android:lines="2" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/group_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Group target"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"/>
+                    android:textSize="20sp" />
 
-                <Spinner
-                    android:id="@+id/group_spinner"
-                    android:layout_width="wrap_content"
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#ffffff"
                     android:layout_marginLeft="16dp"
-                    />
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="6dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+
+                    <Spinner
+                        android:id="@+id/group_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"/>
+
+                </androidx.cardview.widget.CardView>
+
 
 
                 <Button
+                    android:id="@+id/create_poll_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_button_shape_login_eclass"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Create poll"
-                    android:paddingLeft="45dp"
-                    android:paddingRight="45dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:layout_marginTop="32dp"
-                    />
-"
-
-
-
-
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/rounded_button_shape_login_eclass"
+                    android:fontFamily="@font/roboto_medium"
+                    android:paddingLeft="45dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="45dp"
+                    android:paddingBottom="10dp"
+                    android:text="Create poll"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 

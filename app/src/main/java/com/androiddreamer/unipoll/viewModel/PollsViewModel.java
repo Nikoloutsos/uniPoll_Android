@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.androiddreamer.unipoll.Application;
-import com.androiddreamer.unipoll.model.Repository;
 import com.androiddreamer.unipoll.network.RetrofitConfig;
 import com.androiddreamer.unipoll.util.UDHelper;
 
@@ -24,11 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PollsViewModel extends ViewModel {
-    Repository repository;
     UDHelper udHelper;
 
     public PollsViewModel() {
-        repository = Repository.getInstance();
         udHelper = new UDHelper(Application.applicationContext);
     }
 

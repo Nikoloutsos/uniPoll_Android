@@ -48,6 +48,39 @@ public interface API {
             @Field("user_id") String userId
     );
 
+    @FormUrlEncoded
+    @POST(PREFIX + "app/get_super_user_groups.php")
+    Call<ResponseBody> getAdminGroups(
+            @Field("user_id") String userId
+    );
+
+    @FormUrlEncoded
+    @POST(PREFIX + "app/add_poll.php")
+    Call<ResponseBody> createAPoll(
+            @Field("group_id") String groupId,
+            @Field("question") String questionString,
+            @Field("options") String optionsArray,
+            @Field("end_time") String endTime
+    );
+
+    @FormUrlEncoded
+    @POST(PREFIX + "app/get_super_user_active_polls.php")
+    Call<ResponseBody> getSuperUserPolls(
+            @Field("user_id") String userId
+    );
+
+    @FormUrlEncoded
+    @POST(PREFIX + "app/login_with_eclass.php")
+    Call<ResponseBody> logInWithEclass(
+            @Field("username") String userId,
+            @Field("password") String password,
+            @Field("token") String fcmToken
+    );
+
+
+
+
+
     @GET("get_active_polls.php")
     Call<ResponseBody> getActivePolls(
             @Query("user_id") String userId

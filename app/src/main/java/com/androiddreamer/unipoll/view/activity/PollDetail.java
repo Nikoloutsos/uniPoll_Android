@@ -52,9 +52,10 @@ public class PollDetail extends AppCompatActivity {
                             public void onChanged(Boolean aBoolean) {
                                 if (aBoolean == null) return;
                                 if (aBoolean) {
-                                    Toast.makeText(PollDetail.this, "You have successfully voted", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "You have successfully voted", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 } else {
-                                    Toast.makeText(PollDetail.this, "For some unexpected reason your vote did not count", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "For some unexpected reason your vote did not count", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -108,6 +109,23 @@ public class PollDetail extends AppCompatActivity {
                 optionsRadioGroup.addView(radioButton);
             }
             binding.optionsLl.addView(optionsRadioGroup);
+
+
+            int user_vote_id = jsonObject.getInt("user_vote_id");
+            if(user_vote_id != 0){
+                for (int i = 0; i < optionsRadioGroup.getChildCount(); i++) {
+                    RadioButton childAt = (RadioButton)optionsRadioGroup.getChildAt(i);
+                    childAt.setEnabled(false);
+                    if(i == user_vote_id - 1){
+                        childAt.setChecked(true);
+                    }
+                }
+
+                binding.button3.setVisibility(View.GONE);
+            }else{
+                binding.alreadyVotedTV.setVisibility(View.GONE);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

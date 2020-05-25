@@ -15,5 +15,4 @@ public class LoginViewModel extends ViewModel {
         this.context = context;
         this.binding = binding;
     }
-
 }
