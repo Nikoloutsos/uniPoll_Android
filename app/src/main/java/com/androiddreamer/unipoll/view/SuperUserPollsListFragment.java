@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.FragmentSuperUserPollsListBinding;
 import com.androiddreamer.unipoll.network.RetrofitConfig;
+import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.adapter.PollListSuperUserAdapter;
 import com.androiddreamer.unipoll.viewModel.PollsViewModel;
 
@@ -46,7 +47,8 @@ public class SuperUserPollsListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        RetrofitConfig.callApi().getSuperUserPolls("AUEB").enqueue(new Callback<ResponseBody>() {
+        UDHelper udHelper = new UDHelper(getActivity());
+        RetrofitConfig.callApi().getSuperUserPolls(udHelper.getString(UDHelper.KEY_USER_ID)).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {

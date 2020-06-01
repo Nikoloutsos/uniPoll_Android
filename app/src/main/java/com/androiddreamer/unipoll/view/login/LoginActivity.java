@@ -12,6 +12,7 @@ import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityLoginBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.activity.MainActivity;
+import com.androiddreamer.unipoll.view.activity.SuperUserMenuActivity;
 import com.androiddreamer.unipoll.viewModel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,6 +53,13 @@ public class LoginActivity extends AppCompatActivity {
 
         UDHelper udHelper = new UDHelper(getApplicationContext());
         String userId = udHelper.getString(UDHelper.KEY_USER_ID);
+        int isSuperUser = udHelper.getInt(UDHelper.KEY_IS_SUPER_USER);
+        if(isSuperUser != 0){
+            startActivity(new Intent(this, SuperUserMenuActivity.class));
+            finish();
+            return;
+        }
+
         if (!userId.isEmpty()) {
             startActivity(new Intent(this, MainActivity.class));
             finish();

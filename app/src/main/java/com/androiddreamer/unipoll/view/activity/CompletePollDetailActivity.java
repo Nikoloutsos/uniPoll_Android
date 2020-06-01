@@ -56,6 +56,7 @@ public class CompletePollDetailActivity extends AppCompatActivity {
                         try{
                             JSONObject webServerResponseJson = new JSONObject(s);
                             JSONArray pollStats = webServerResponseJson.getJSONArray("poll_stats");
+                            binding.questionTv.setText(webServerResponseJson.getString("question"));
                             renderBarPlot(pollStats);
                         }catch (Exception e){
 
@@ -93,6 +94,7 @@ public class CompletePollDetailActivity extends AppCompatActivity {
         PieData pieData = new PieData(set);
         pieChart.setData(pieData);
         pieChart.getLegend().setEnabled(false);
+        pieChart.invalidate();
 
         for (int i = 0; i < json.length(); i++) {
             String optionString = json.getJSONObject(i).getString("option");

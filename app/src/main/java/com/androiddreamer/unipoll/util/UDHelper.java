@@ -58,7 +58,7 @@ public class UDHelper {
 
 
     public int getInt(String keyIdentifier) {
-        return pref.getInt(keyIdentifier, Integer.MAX_VALUE);
+        return pref.getInt(keyIdentifier, 0);
     }
 
 

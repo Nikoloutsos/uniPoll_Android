@@ -14,6 +14,7 @@ import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityEmailVerificationBinding;
 import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.view.activity.MainActivity;
+import com.androiddreamer.unipoll.view.activity.SuperUserMenuActivity;
 import com.androiddreamer.unipoll.viewModel.VerifyEmailViewModel;
 
 import org.json.JSONException;
@@ -65,11 +66,19 @@ public class VerifyEmailActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(s);
                                 int status = jsonObject.getInt("status");
+
+
                                 if (status == 1) {
                                     String userId = jsonObject.getString("user_id");
                                     UDHelper udHelper = new UDHelper(getApplicationContext());
                                     udHelper.setString(UDHelper.KEY_USER_ID, userId);
-                                    startActivity(new Intent(VerifyEmailActivity.this, MainActivity.class));
+                                    if(jsonObject.getInt("is_super_user") == 1){
+                                        udHelper.setInt(UDHelper.KEY_IS_SUPER_USER, 1);
+                                        startActivity(new Intent(VerifyEmailActivity.this, SuperUserMenuActivity.class));
+                                    }else{
+                                        startActivity(new Intent(VerifyEmailActivity.this, MainActivity.class));
+                                    }
+                                    finish();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

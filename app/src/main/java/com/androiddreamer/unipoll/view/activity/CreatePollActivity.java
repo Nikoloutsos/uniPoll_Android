@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.ActivityCreatePollBinding;
+import com.androiddreamer.unipoll.util.UDHelper;
 import com.androiddreamer.unipoll.viewModel.CreatePollViewModel;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
@@ -40,7 +41,8 @@ public class CreatePollActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_poll);
         viewModel = ViewModelProviders.of(this).get(CreatePollViewModel.class);
 
-        viewModel.getAdminGroups("AUEB").observe(this, new Observer<HashMap<String, String>>() {
+        UDHelper udHelper = new UDHelper(getApplicationContext());
+        viewModel.getAdminGroups(udHelper.getString(UDHelper.KEY_USER_ID)).observe(this, new Observer<HashMap<String, String>>() {
             @Override
             public void onChanged(HashMap<String, String> stringStringHashMap) {
                 if (stringStringHashMap == null) return;

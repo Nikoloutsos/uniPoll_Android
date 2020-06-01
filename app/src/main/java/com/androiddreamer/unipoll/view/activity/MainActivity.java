@@ -27,15 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Log.d("pokemon", "onCreate: " + FirebaseInstanceId.getInstance().getToken());
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
         initBottomNavigationBar();
-
-        startActivity(new Intent(this, SuperUserMenuActivity.class));
-
         ActivePollListFragment activePollListFragment = new ActivePollListFragment();
         getSupportFragmentManager().beginTransaction().add(binding.fragmentHolder.getId(), activePollListFragment, "0").commit();
     }

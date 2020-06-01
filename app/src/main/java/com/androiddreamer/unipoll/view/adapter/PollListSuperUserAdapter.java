@@ -1,6 +1,7 @@
 package com.androiddreamer.unipoll.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddreamer.unipoll.R;
 import com.androiddreamer.unipoll.databinding.LayoutPollListItemBinding;
+import com.androiddreamer.unipoll.view.activity.CompletePollDetailActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,9 +50,26 @@ public class PollListSuperUserAdapter extends RecyclerView.Adapter<RecyclerView.
 
             questionTV.setText(title);
             expTimeTV.setText(timeEnded);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(context, CompletePollDetailActivity.class);
+                    intent.putExtra("id", item.getInt("poll_id"));
+                    context.startActivity(intent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
     }
 
     @Override
